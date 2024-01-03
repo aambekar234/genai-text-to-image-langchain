@@ -15,7 +15,7 @@ import prompts
 
 def process_data(input: dict) -> dict:
     """
-    Process the input data and generate a final description of scene/plot.
+    Process the input data and generate a final description of scene/plot..
 
     Args:
         input (dict): The input data containing the raw text.
