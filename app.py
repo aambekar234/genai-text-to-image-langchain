@@ -22,7 +22,7 @@ font_size = 14
 bg_color = '#333333'
 window = tkinter.Tk()
 window.configure(bg=bg_color)
-window.title("App by A. Ambekar")
+window.title("Generate Image")
 window.geometry('800x520')
 frame = tkinter.Frame(bg=bg_color)
 
