@@ -69,11 +69,12 @@ def fetch_image(popupFrame, popupWindow, temperature, user_text, model):
         print("Exception: ", e )
         img = Image.open('images/error.png')
         img.thumbnail((200, 200))
-        text = "Something went wrong. Please check the console logs for more details."
+        text = f"Something went wrong. Please check the console logs for more details.\n\nError: {e}"
     
     progress.grid_forget()
     result_textbox.insert(tkinter.INSERT, text)
     img_tk = ImageTk.PhotoImage(img)
+    img_tk.background = bg_color
     # Update the label to display the image
     img_label = Label(popupFrame, image=img_tk)
     img_label.image = img_tk
@@ -111,7 +112,8 @@ def create_fetch_window():
     new_window = Toplevel()
     new_window.geometry('950x800')
     new_window.title("Generating...")
-    new_frame = tkinter.Frame(new_window, bg='#333333')
+    new_window.configure(bg=bg_color)
+    new_frame = tkinter.Frame(new_window, bg=bg_color)
     
     # Start fetching in a new thread
     threading.Thread(target=fetch_image, args=(new_frame, new_window, temperature, user_text, selected_model.get())).start()
@@ -121,10 +123,10 @@ def create_fetch_window():
 
 # Creating widgets
 screen_label = tkinter.Label(
-    frame, text="Text to Immersive Picture", bg='#333333', fg="#FF3399", font=("Arial", 25))
+    frame, text="Text to Immersive Picture", bg=bg_color, fg="#FF3399", font=("Arial", 25))
 
 textbox_label = tkinter.Label(
-    frame, text="Enter your text", bg='#333333', fg="#FFFFFF",  font=("Arial", font_size))
+    frame, text="Enter your text", bg=bg_color, fg="#FFFFFF",  font=("Arial", font_size))
 textbox_entry = tkinter.Text(frame, height=10, width=70, font=("Arial", font_size-2))
 
 temperature_entry = tkinter.Entry(frame, font=("Arial", font_size))
@@ -135,7 +137,7 @@ temperature_label = tkinter.Label(
 
 # radio buttons
 radio_button_label = tkinter.Label(
-    frame, text="Select LLM Model", bg='#333333', fg="#FFFFFF",  font=("Arial", font_size))
+    frame, text="Select LLM Model", bg=bg_color, fg="#FFFFFF",  font=("Arial", font_size))
 # Variable to store the selected option
 selected_model = tkinter.StringVar(value="gpt-4-1106-preview")
 # Create radio buttons
