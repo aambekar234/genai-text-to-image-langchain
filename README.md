@@ -16,7 +16,7 @@ As of now (01/01/2024), OpenAI adjusts the image prompt that we input into the D
 
 1. Create a conda environment using the `env.yml` file:
    ```
-   conda env create -f env.yml --force
+   conda env create -f env.yaml --force
    ```
 2. Activate the newly created conda environment:
    ```
